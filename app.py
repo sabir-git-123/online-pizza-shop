@@ -28,6 +28,24 @@ cur = con.cursor()
 cur.execute(
     "CREATE TABLE IF NOT EXISTS orders(name, filling, sauce, size1, size2, acute, drink);")
 
+def read_menu(filename):
+    try:
+        with open(filename) as f:
+            result = [item.strip() for ite in f.readlines()]
+    except FileNotFoundError:
+        print(
+        f"Error: The file '{filename}' could not be found.")
+        result = []
+    except PermissionError:
+        print(f"Error: You do not have permission to read \
+        the file '{filename}'.")
+        result = []
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        result = []
+
+    return result
+
 app = Flask(__name__)
 
 
