@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> Добро пожаловать в кофейню!</h1>
+
+<form action="/order" method="post">
+    {% if error %}
+    <p><strong>{{error}}</strong></p>
+    {% endif %}
+
+    <input type="text" name="name" placeholder="ВВЕДИТЕ ИМЯ">
+    <select name="filling">
+      <option value="">- Выберите начинку которую вы предпочитаете -</option>
+      {% for f in filling -%}
+      <option value="{{ f }}">{{ f | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <select name="sauce">
+      <option value="">- Выберите соус -</option>
+      {% for s in sauce -%}
+      <option value="{{ s }}">{{ s | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <select name="size1">
+      <option value="">- Выберите размер теста -</option>
+      {% for s1 in size1 -%}
+      <option value="{{ s1 }}">{{ s1 | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <select name="size2">
+      <option value="">- Выберите размер пиццы -</option>
+      {% for s2 in size2 -%}
+      <option value="{{ s2 }}">{{ s2 | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <select name="acute">
+      <option value="">- Поострее или не очень? -</option>
+      {% for a in acute -%}
+      <option value="{{ a }}">{{ a | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <select name="drink">
+      <option value="">- Выберите вкус -</option>
+      {% for d in drink -%}
+      <option value="{{ d }}">{{ d | capitalize }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" value="Подтвердить">
+</form>
+
+<img src="static/img/822349_preview.jpg"
+ alt="Coffee drinks" width="100%">
+Image by <a href="https://www.freepik.com/free-vector/
+best-coffe-town-background_822349.htm">Freepik</a>
+
+
+{% endblock %}

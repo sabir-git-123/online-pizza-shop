@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Наичнка</th>
+        <th>Соус</th>
+        <th>Размер теста</th>
+        <th>Размер пиццы</th>
+        <th>Классическая или острая</th>
+        <th>Напиток</th>
+    </tr>
+    {% for o in orders -%}
+    <tr>
+        <td>{{ o['name'] }}</td>
+        <td>{{ o['filling'] }}</td>
+        <td>{{ o['sauce'] }}</td>
+        <td>{{ o['size1'] }}</td>
+        <td>{{ o['size2'] }}</td>
+        <td>{{ o['acute'] }}</td>
+        <td>{{ o['drink'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
