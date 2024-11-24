@@ -91,14 +91,3 @@ def list():
 
 
 
-def read_menu(filename):
-    f = open(filename)
-    temp = f.readlines()
-    result = []
-    for item in temp:
-        new_item = item.strip()
-        result.append(new_item)
-
-    return result
-
-
