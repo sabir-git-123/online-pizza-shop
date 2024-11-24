@@ -23,10 +23,7 @@ def get_orders():
 
     return rows
 
-con = sqlite3.connect("orders.db")
-cur = con.cursor()
-cur.execute(
-    "CREATE TABLE IF NOT EXISTS orders(name, filling, sauce, size1, size2, acute, drink);")
+
 
 def read_menu(filename):
     try:
@@ -46,6 +43,17 @@ def read_menu(filename):
 
     return result
 
+filling = read_menu("filling.txt")
+sauce = read_menu("sauce.txt")
+size1 = read_menu("size1.txt")
+size2 = read_menu("size2.txt")
+acute = read_menu("acute.txt")
+drink = read_menu("drink.txt")
+
+con = sqlite3.connect("orders.db")
+cur = con.cursor()
+cur.execute(
+    "CREATE TABLE IF NOT EXISTS orders(name, filling, sauce, size1, size2, acute, drink);")
 app = Flask(__name__)
 
 
@@ -92,12 +100,5 @@ def read_menu(filename):
         result.append(new_item)
 
     return result
-
-filling = read_menu("filling.txt")
-sauce = read_menu("sauce.txt")
-size1 = read_menu("size1.txt")
-size2 = read_menu("size2.txt")
-acute = read_menu("acute.txt")
-drink = read_menu("drink.txt")
 
 
